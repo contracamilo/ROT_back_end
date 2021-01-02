@@ -8,9 +8,9 @@ const router = Router();
 // api/person
 router
   .route('/')
-  .get(catchErrors(controllers.getMany))
+  .post(catchErrors(controllers.createOne))
   .all(tokenVerify)
-  .post(catchErrors(controllers.createOne));
+  .get(catchErrors(controllers.getMany));
 
 // api/person/:id
 router
