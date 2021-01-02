@@ -8,10 +8,9 @@ const router = Router();
 // api/user
 router
   .route('/')
-  .get(catchErrors(controllers.getMany));
+  .get(catchErrors(controllers.getMany))
   .all([tokenVerify, adminRoleVerify])
-  .post(catchErrors(controllers.createOneUser))
-
+  .post(catchErrors(controllers.createOneUser));
 
 // api/user/:id
 router
