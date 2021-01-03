@@ -1,18 +1,18 @@
 import { json, urlencoded } from 'body-parser';
-import cors from 'cors';
+// import cors from 'cors';
 import express from 'express';
 import morgan from 'morgan';
 import personRouter from './resources/person/person.router';
 import userRouter from './resources/user/user.router';
 import loginRouter from './resources/login/login.router';
 import { notFound, developmentErrors, productionErrors } from './utils/errorHandler';
-import { corsOptionsDelegate } from './utils/corsManager';
+// import { corsOptionsDelegate } from './utils/corsManager';
 
 const app = express();
 
 app.disable('x-powered-by');
 
-app.use(cors(corsOptionsDelegate));
+// app.use(cors(corsOptionsDelegate));
 app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(morgan('dev'));
