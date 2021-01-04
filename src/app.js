@@ -12,7 +12,7 @@ const app = express();
 app.disable('x-powered-by');
 
 const corsOptions = {
-  origin: ['https://keen-sammet-3bfe77.netlify.app/'],
+  origin: ['https://gifted-wilson-b2cdbb.netlify.app'],
   optionsSuccessStatus: 200,
 };
 
