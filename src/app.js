@@ -12,7 +12,7 @@ const app = express();
 app.disable('x-powered-by');
 
 const corsOptions = {
-  origin: 'https://rot-front.herokuapp.com',
+  origin: ['https://keen-sammet-3bfe77.netlify.app/'],
   optionsSuccessStatus: 200,
 };
 
