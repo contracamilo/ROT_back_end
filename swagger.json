@@ -1,0 +1,271 @@
+
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a simple example NodeJS API project to demonstrate Swagger Documentation",
+    "version": "1.0.0",
+    "title": "Tasks API",
+    "contact": {
+      "email": "abc@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "schemes": [
+    "http"
+  ],
+  "host": "localhost:3003",
+  "basePath": "/api",
+  "paths": {
+    "/person": {
+      "get": {
+        "summary": "Get all the tasks",
+        "description": "Get all the tasks",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/personsData"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "User Login",
+        "description": "User Login",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "task object",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/personsData"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/user": {
+      "get": {
+        "summary": "Users List",
+        "description": "Retrieve a list of all users, requires a token",
+        "produces": [
+          "application/text"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in":"header",
+            "name": "Authorization",
+            "description": "token",
+            "required": true,
+            "schema": {
+              "Authorization": {
+                "type":"string" 
+              }
+            }
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "task object",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/usersList"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "personsData": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "integer"
+        },
+        "category": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "imgUrl": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "meta": {
+          "type": "object",
+          "properties": {
+            "likes": {"type": "number"},
+            "dislikes": { "type": "number"}
+          }
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      
+      }
+    },
+    "user":{
+      "type": "object",
+      "properties": {
+        "_id": { "type": "string"},
+        "role": { "type": "string"},
+        "google": {"type": "boolean"},
+        "state": {"type": "boolean"},
+        "name": { "type": "string"},
+        "email": { "type": "string"},
+        "password": { "type": "string"},
+        "createdAt": { "type": "string"},
+        "updatedAt": { "type": "string"}
+      }
+
+    },
+    "userData": {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "type": "boolean"
+        },
+        "user": {
+            "type": "object",
+            "role": {
+              "type": "string"
+            },
+            "google": {
+              "type": "boolean"
+            },
+            "state": {
+              "type": "boolean"
+            },
+            "_id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "createdAt": {
+              "type": "string"
+            },
+            "updatedAt": {
+              "type": "string"
+            }
+        },
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "usersList": {
+      "type": "object",
+      "properties": {
+        "_id": { "type": "string"},
+        "role": { "type": "string"},
+        "google": {"type": "boolean"},
+        "state": {"type": "boolean"},
+        "name": { "type": "string"},
+        "email": { "type": "string"},
+        "password": { "type": "string"},
+        "createdAt": { "type": "string"},
+        "updatedAt": { "type": "string"}
+      }  
+    },
+    "InvalidResponse": {
+      "type": "object",
+      "properties": {
+        "statusCode": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

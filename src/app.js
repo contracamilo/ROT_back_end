@@ -2,11 +2,15 @@ import { json, urlencoded } from 'body-parser';
 import cors from 'cors';
 import express from 'express';
 import morgan from 'morgan';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from '../swagger.json';
 import personRouter from './resources/person/person.router';
 import userRouter from './resources/user/user.router';
 import loginRouter from './resources/login/login.router';
 import { notFound, developmentErrors, productionErrors } from './utils/errorHandler';
+import fs from 'fs';
 
+const customCss = fs.readFileSync(process.cwd() + '/swagger.css', 'utf8');
 const app = express();
 
 app.disable('x-powered-by');
@@ -24,6 +28,9 @@ app.use(morgan('dev'));
 app.use('/api/user', userRouter);
 app.use('/api/person', personRouter);
 app.use('/api/login', loginRouter);
+
+// Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, { customCss }));
 
 // if 404
 app.use(notFound);

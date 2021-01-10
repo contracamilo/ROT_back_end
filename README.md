@@ -1,4 +1,6 @@
-# isHealthy backend
+# ROT Back-end
+
+API Deployed Version: [Heroku](https://prod-rot-api.herokuapp.com/api/person)
 
 Don´t forget install mongoDB and create a local instance.
 
@@ -8,14 +10,14 @@ Command to run a MongoDB local instance:
 
 windows:
 
-``` cmd
+```cmd
 
  "C:\Program Files\MongoDB\Server\4.4\bin\mongod.exe" --dbpath="c:\data\db"
 ```
 
 To run this project run the following commands on console.
 
-``` bash
+```bash
 
  npm install && npm start
 ```
